@@ -15,10 +15,6 @@ app.use((req, res, next) => {
 
 app.use(express.static('files'))
 
-app.get('/', (req, res) => {
-  res.end("Listening on http://localhost:8000")
-})
-
 app.post("/upload", (req, res) => {
   const newpath = __dirname + "/files/"
   if(!('files' in req)){
@@ -39,5 +35,5 @@ app.post("/upload", (req, res) => {
   }
 })
 
-app.listen(8000)
-console.log('Listening on http://localhost:8000')
+app.listen(process.env.PORT || 5000)
+console.log('Listening on http://localhost:' + (process.env.PORT || 5000))
